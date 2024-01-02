@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.flyway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"org.example.*"})
-@EntityScan(basePackages = ("org.example.*"))
-@EnableJpaRepositories(basePackages = {"org.example.*"})
+@ComponentScan(basePackages = "org.example.*")
+@EnableJpaRepositories(basePackages = "org.example.*")
+@EntityScan(basePackages = "org.example.*")
 public class HMSApplication {
     public static void main(String[] args) {
         SpringApplication.run(HMSApplication.class);
