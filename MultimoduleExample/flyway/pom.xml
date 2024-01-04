@@ -10,11 +10,33 @@
     </parent>
 
     <artifactId>flyway</artifactId>
-
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-mysql</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <configuration>
+                    <locations>filesystem:/src/main/resources/db/migration/</locations>
+                    <url>jdbc:mysql://localhost:3307/management_system</url>
+                    <user>root</user>
+                    <password>root</password>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
