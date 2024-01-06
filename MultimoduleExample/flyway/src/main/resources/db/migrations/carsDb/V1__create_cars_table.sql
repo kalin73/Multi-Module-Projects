@@ -1,0 +1,6 @@
+CREATE TABLE cars
+(
+    id    BIGINT PRIMARY KEY AUTO_INCREMENT,
+    brand VARCHAR(255),
+    color VARCHAR(255)
+);

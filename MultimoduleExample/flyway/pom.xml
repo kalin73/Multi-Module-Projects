@@ -49,6 +49,16 @@
                             <password>root</password>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>db3</id>
+                        <configuration>
+                            <locations>filesystem:/src/main/resources/db/migrations/carsDb/</locations>
+                            <url>jdbc:mysql://localhost:3307/car</url>
+                            <user>root</user>
+                            <password>root</password>
+                        </configuration>
+                    </execution>
+
                 </executions>
             </plugin>
         </plugins>
