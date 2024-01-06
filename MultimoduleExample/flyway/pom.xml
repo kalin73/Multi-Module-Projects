@@ -30,11 +30,26 @@
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
-                <configuration>
-                    <url>jdbc:mysql://localhost:3307/management_system</url>
-                    <user>root</user>
-                    <password>root</password>
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>db1</id>
+                        <configuration>
+                            <locations>filesystem:/src/main/resources/db/migrations/customerDb/</locations>
+                            <url>jdbc:mysql://localhost:3307/customer</url>
+                            <user>root</user>
+                            <password>root</password>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>db2</id>
+                        <configuration>
+                            <locations>filesystem:/src/main/resources/db/migrations/fraudDb/</locations>
+                            <url>jdbc:mysql://localhost:3307/fraud</url>
+                            <user>root</user>
+                            <password>root</password>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
