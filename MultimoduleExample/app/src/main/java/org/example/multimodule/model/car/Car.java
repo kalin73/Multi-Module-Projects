@@ -1,18 +1,25 @@
-package org.example.multimodule.model.doctor;
+package org.example.multimodule.model.car;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "doctors")
-public class Doctor {
+@Builder
+@Entity
+@Table(name = "cars")
+public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String specialist;
+
+    @Column
+    private String brand;
+
+    @Column
+    private String color;
 }
