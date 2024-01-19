@@ -6,3 +6,11 @@ spring:
           uri: lb://SECURITY
           predicates:
             - Path=/auth/**
+
+        - id: customer
+          uri: lb://CUSTOMER
+          predicates:
+            - Path=/api/v1/customers
+          filters:
+            - AuthenticationFilter
+
