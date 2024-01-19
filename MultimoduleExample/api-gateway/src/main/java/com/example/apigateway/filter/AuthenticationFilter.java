@@ -24,14 +24,14 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                 if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
                     throw new RuntimeException("Missing authorization header!");
                 }
-                String authHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
+                String token = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
 
-                if (authHeader != null && authHeader.startsWith("Bearer ")) {
-                    authHeader = authHeader.substring(7);
+                if (token != null && token.startsWith("Bearer ")) {
+                    token = token.substring(7);
                 }
 
                 try {
-                    jwtUtil.validateToken(authHeader);
+                    jwtUtil.validateToken(token);
 
                 } catch (Exception ex) {
                     System.out.println("Invalid access!");
