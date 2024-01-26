@@ -11,7 +11,7 @@ public record FraudController(FraudCheckService fraudCheckService) {
     public FraudCheckResponse isFraudster(@PathVariable("customerId") Long customerId) {
         boolean isFraudulentCustomer = this.fraudCheckService.isFraudulentCustomer(customerId);
 
-        log.info("fraud check request for customer {}", customerId);
+        log.info("Fraud check request for customer {}", customerId);
 
         return new FraudCheckResponse(isFraudulentCustomer);
     }
