@@ -5,6 +5,7 @@ import com.example.security.domain.entity.UserCredential;
 import com.example.security.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
-    private final AuthenticationManager authenticationManager;
+    private final AuthenticationProvider authenticationProvider;
 
 
     @PostMapping("/register")
@@ -24,10 +25,10 @@ public class AuthController {
 
     @GetMapping("/token")
     public String getToken(@RequestBody AuthRequest user) {
-        Authentication authenticate = authenticationManager
+        Authentication authenticate = authenticationProvider
                 .authenticate(new UsernamePasswordAuthenticationToken(user.email(), user.password()));
 
-        if(!authenticate.isAuthenticated()){
+        if (!authenticate.isAuthenticated()) {
             throw new RuntimeException("Invalid access!");
         }
 
